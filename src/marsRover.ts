@@ -17,7 +17,7 @@ export class MarsRover {
     }
 
     /* Updates the size of the Plateau checking against the Default Max Coordinates */
-    
+
     updatePlateauSize =  (coordinates: string): void => {
         let [x , y] : number[] = coordinates.split(" ").map(ele => parseInt(ele));
         
@@ -64,6 +64,8 @@ export class MarsRover {
             print(userInput);
 
             status = plateau.setRoverMoves(userInput);
+            if (!status) print(`Invalid Input. Try again.`);
+            
         } while(!status);
     }
 }
