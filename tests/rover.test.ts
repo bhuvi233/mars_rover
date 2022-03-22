@@ -1,7 +1,7 @@
 import { Direction } from '../src/direction';
 import { Rover } from '../src/rover';
 import { Plateau } from '../src/plateau';
-import { MarsRover } from '../src/marsRover';
+import { MarsRover, DefaultUpperRightX, DefaultUpperRightY } from '../src/marsRover';
 
 describe('setRoverPosition', () => {
 
@@ -11,7 +11,7 @@ describe('setRoverPosition', () => {
     ])('should start from a given initial point', (givenString, expectedX, expectedY, expectedDirec) => {
         const rover = new Rover(0,0);
         
-        rover.setRoverPosition(givenString, MaxUpperRight.X, MaxUpperRight.Y);
+        rover.setRoverPosition(givenString, DefaultUpperRightX, DefaultUpperRightY);
 
         expect(rover.position.x).toBe(expectedX);
         expect(rover.position.y).toBe(expectedY);
@@ -30,7 +30,7 @@ describe('setRoverPosition', () => {
     ])('should check for invalid string and prompt for the input again', (givenString, expectedError) => {
         const rover = new Rover(0,0);
 
-        expect(rover.setRoverPosition(givenString, MaxUpperRight.X, MaxUpperRight.Y)).toBe(expectedError);
+        expect(rover.setRoverPosition(givenString, DefaultUpperRightX, DefaultUpperRightY)).toBe(expectedError);
         
     });
 

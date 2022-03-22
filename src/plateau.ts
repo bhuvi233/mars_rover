@@ -16,6 +16,7 @@ export class Plateau {
         this.rover = new Rover(0,0);
         this.moves = "";
         this.executeCommand = new ExecuteCommand();
+        print(`Plateau size (x,y) = (${this.x}, ${this.y})`)
     }
 
     /* Validates and updates rover movement instructions */

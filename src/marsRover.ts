@@ -2,7 +2,8 @@ import { clear, print, askQuestion} from './console';
 import readlineSync = require('readline-sync');
 import { Plateau } from './plateau';
 
-global.MaxUpperRight = {X: 5,Y: 5};
+export const DefaultUpperRightX = 5;
+export const DefaultUpperRightY = 5;
 
 export class MarsRover {
     continueRover: boolean | string = true;
@@ -21,8 +22,8 @@ export class MarsRover {
     updatePlateauSize =  (coordinates: string): void => {
         let [x , y] : number[] = coordinates.split(" ").map(ele => parseInt(ele));
         
-        if (x > MaxUpperRight.X || x <= 0 || x === undefined) x = MaxUpperRight.X;
-        if (y > MaxUpperRight.Y || y <= 0 || y === undefined) y = MaxUpperRight.Y;
+        if (x > DefaultUpperRightX || x <= 0 || x === undefined) x = DefaultUpperRightX;
+        if (y > DefaultUpperRightY || y <= 0 || y === undefined) y = DefaultUpperRightY;
 
         const myPlateau = new Plateau(x, y);
 
@@ -49,7 +50,7 @@ export class MarsRover {
             print(userInput);
 
             status = plateau.rover.setRoverPosition(userInput, plateau.x, plateau.y);
-            if (!status) print(`Invalid Input. Try again.`);
+            if (!status) print(`Invalid Input. Try again. <x y Direction(S, W, E, N)>`);
 
         } while(!status);
     }
@@ -64,7 +65,7 @@ export class MarsRover {
             print(userInput);
 
             status = plateau.setRoverMoves(userInput);
-            if (!status) print(`Invalid Input. Try again.`);
+            if (!status) print(`Invalid Input. Try again. <L or R or M> `);
             
         } while(!status);
     }
